@@ -289,6 +289,19 @@ main { flex: 1; }
 .docs-section h3 { font-size: 16px; margin: 30px 0 10px; }
 .docs-section p, .docs-section li { color: var(--muted); font-size: 14px; line-height: 1.75; }
 .docs-section li { padding-left: 5px; margin-bottom: 8px; }
+.docs-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+.docs-feature-grid > div { border: 1px solid var(--line); background: var(--paper); border-radius: 9px; padding: 16px; }
+.docs-feature-grid svg { color: var(--green-deep); margin-bottom: 14px; }
+.docs-feature-grid strong { display: block; margin-bottom: 7px; font-size: 13px; }
+.docs-feature-grid span { color: var(--muted); font-size: 11px; line-height: 1.55; }
+.docs-flow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 22px; }
+.docs-flow-grid > div { border: 1px solid var(--line); background: var(--soft); border-radius: 10px; padding: 16px; }
+.docs-flow-grid span { display: inline-flex; align-items: center; justify-content: center; width: 27px; height: 27px; border-radius: 7px; background: var(--green-soft); color: var(--green-deep); font-size: 10px; font-weight: 800; margin-bottom: 17px; }
+.docs-flow-grid strong { display: block; font-size: 13px; margin-bottom: 7px; }
+.docs-flow-grid p { margin: 0; font-size: 11px; line-height: 1.55; }
+.docs-checker-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 20px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); padding: 22px; margin: 24px 0; }
+.docs-checker-card h3 { margin: 13px 0 8px; }
+.docs-checker-card p { margin: 0; }
 .code-formula { background: var(--dark); color: var(--green); border-radius: 8px; padding: 18px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; margin: 19px 0; }
 .sources-section a { display: flex; flex-direction: column; gap: 4px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); padding: 15px; margin-bottom: 10px; }
 .sources-section a:hover { border-color: #9bb18e; }
@@ -362,6 +375,8 @@ main { flex: 1; }
   .docs-page { display: block; padding-top: 55px; }
   .docs-nav { display: none; }
   .docs-hero h1 { font-size: 38px; }
+  .docs-feature-grid, .docs-flow-grid, .docs-checker-card { grid-template-columns: 1fr; }
+  .docs-checker-card .button { width: 100%; }
   .footer-grid, .footer-bottom { flex-direction: column; }
   .footer-links { flex-wrap: wrap; }
   .footer-bottom { gap: 8px; }

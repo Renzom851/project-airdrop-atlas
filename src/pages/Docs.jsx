@@ -1,62 +1,110 @@
-import { BookOpen, Calculator, LockKeyhole, ShieldAlert } from 'lucide-react'
+import { BookOpen, Calculator, CheckCircle2, FileText, ListChecks, LockKeyhole, ShieldAlert, Target } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function Docs() {
   return (
     <section className="docs-page container">
       <aside className="docs-nav">
         <span>Documentation</span>
-        <a href="#overview">Overview</a>
-        <a href="#grass-model">Grass model</a>
-        <a href="#wallets">Wallet safety</a>
+        <a href="#overview">Airdrop Atlas</a>
+        <a href="#what-it-does">What it does</a>
+        <a href="#how-checkers-work">How checkers work</a>
+        <a href="#grass-model">Grass checker</a>
+        <a href="#privacy">Privacy</a>
         <a href="#limitations">Limitations</a>
         <a href="#sources">Sources</a>
       </aside>
       <article className="docs-content">
         <div className="docs-hero" id="overview">
-          <span className="kicker">Documentation</span>
-          <h1>Independent analysis,<br />without false precision.</h1>
-          <p>Airdrop Atlas provides educational estimates from user-supplied inputs and documented historical data. It does not check official eligibility or query private account data.</p>
+          <span className="kicker">Airdrop Atlas docs</span>
+          <h1>What this website is for.</h1>
+          <p>Airdrop Atlas is a browser-based hub for airdrop allocation checkers. It helps users turn public project activity, points, epochs, ranks, or other documented inputs into transparent educational estimates.</p>
         </div>
 
-        <div className="docs-callout"><BookOpen size={20} /><p><strong>Plain-language summary:</strong> the Grass checker estimates a Season 2-style allocation from Uptime Points by applying a Season 1-style tier and payout model across 20 epochs. It is a projection, not an official claim result.</p></div>
+        <div className="docs-callout"><BookOpen size={20} /><p><strong>Plain-language summary:</strong> the website does not claim tokens, log in to airdrop accounts, or promise official eligibility. It gives users a clean place to enter known values, see the math, adjust assumptions, and understand the limits of each model.</p></div>
+
+        <section id="what-it-does" className="docs-section">
+          <div className="docs-icon"><Target size={20} /></div>
+          <h2>What Airdrop Atlas does</h2>
+          <p>The site organizes independent airdrop calculators in one place. Each checker is built around a specific project and shows the input fields, assumptions, estimated output, and limitations directly on the page.</p>
+          <div className="docs-feature-grid">
+            <div>
+              <CheckCircle2 size={18} />
+              <strong>Estimate allocations</strong>
+              <span>Convert user-entered point or activity data into a projected token amount when a model is available.</span>
+            </div>
+            <div>
+              <CheckCircle2 size={18} />
+              <strong>Show the assumptions</strong>
+              <span>Keep formulas, tier rules, default pools, and warnings visible instead of hiding the calculation.</span>
+            </div>
+            <div>
+              <CheckCircle2 size={18} />
+              <strong>Keep inputs local</strong>
+              <span>Run calculations in the browser so users can test scenarios without submitting point history to a server.</span>
+            </div>
+          </div>
+          <p>Airdrop Atlas is useful for planning, comparison, and learning how an allocation model might work. It is not a replacement for official project dashboards or claim pages.</p>
+        </section>
+
+        <section id="how-checkers-work" className="docs-section">
+          <div className="docs-icon"><ListChecks size={20} /></div>
+          <h2>How the checkers work</h2>
+          <ol>
+            <li>A supported project gets a dedicated checker page with the fields that matter for that project.</li>
+            <li>The user enters public values from the project dashboard, such as points, epochs, ranks, or activity totals.</li>
+            <li>The checker applies a disclosed formula or projection model and updates the result immediately.</li>
+            <li>The page shows the estimated allocation, model settings, data sources, and limitations so users can judge the result.</li>
+          </ol>
+          <div className="code-formula">User inputs + documented assumptions = educational estimate</div>
+          <div className="docs-flow-grid">
+            <div><span>01</span><strong>Choose a project</strong><p>Start from the airdrop directory and open a live checker.</p></div>
+            <div><span>02</span><strong>Enter known values</strong><p>Paste the values shown in the project dashboard or activity history.</p></div>
+            <div><span>03</span><strong>Review the model</strong><p>Check the output, editable assumptions, source notes, and warnings.</p></div>
+          </div>
+        </section>
 
         <section id="grass-model" className="docs-section">
           <div className="docs-icon"><Calculator size={20} /></div>
-          <h2>Grass Season 2 allocation projection</h2>
-          <p>Grass Stage 2 separates points into Uptime Points and Network Points. This checker uses Uptime Points as the input and projects a GRASS allocation with a Season 1-style calculation.</p>
-          <p>Season 2 is modeled as 20 numbered epochs: Epoch 1 through Epoch 20. Closed Alpha, Bonus Epoch, and other Season 1 labels are not included as separate rows.</p>
-          <h3>Calculation</h3>
-          <ol>
-            <li>For each S2 epoch, the user enters their Uptime Points from the Grass dashboard.</li>
-            <li>Each epoch is automatically assigned a tier using the same point bands used by the site’s Season 1 model.</li>
-            <li>The historical Season 1 Network Snapshot payout curve is normalized into 20 equal S2 epochs.</li>
-            <li>The selected tier payout for each epoch is added into the estimated total GRASS allocation.</li>
-          </ol>
-          <div className="code-formula">Estimated S2 allocation = Σ projected payout(auto tier, Epoch 1 … Epoch 20)</div>
-          <h3>Model assumption</h3>
-          <p>The projection defaults to a 90M GRASS S2 network pool and redistributes the Season 1 Network Snapshot payout curve across 20 equal S2 epochs. The checker settings let users adjust that assumed pool. Grass has not published a final Season 2 token conversion formula for this calculator to verify.</p>
+          <h2>Current live checker: Grass</h2>
+          <p>The first supported model is the Grass Season 2 allocation checker. It estimates a Season 2-style GRASS allocation from Uptime Points by applying a Season 1-style tier and payout projection across 20 epochs.</p>
+          <div className="docs-checker-card">
+            <div>
+              <span className="status-pill">Live checker</span>
+              <h3>Grass S2 allocation checker</h3>
+              <p>Users enter Uptime Points for Epoch 1 through Epoch 20. The checker assigns an automatic tier, estimates the projected GRASS payout per epoch, and adds the total.</p>
+            </div>
+            <Link to="/airdrops/grass" className="button button-primary">Open checker</Link>
+          </div>
+          <h3>Grass model summary</h3>
+          <p>Grass Stage 2 separates points into Uptime Points and Network Points. This checker uses Uptime Points only. It defaults to a 90M GRASS assumed S2 network pool and lets users adjust that pool in the model settings.</p>
+          <div className="code-formula">Estimated Grass S2 allocation = sum of projected payout(auto tier, Epoch 1 to Epoch 20)</div>
+          <p>The Grass checker is a projection, not an official claim result. Airdrop Atlas can add more project checkers later when their source data and model assumptions can be documented clearly.</p>
         </section>
 
-        <section id="wallets" className="docs-section">
+        <section id="privacy" className="docs-section">
           <div className="docs-icon"><LockKeyhole size={20} /></div>
-          <h2>Wallet use and safety</h2>
-          <p>A wallet address is optional and does not affect the calculation. Pasting or connecting a wallet only labels the on-screen analysis. The app runs in the browser and does not submit point entries to a backend.</p>
+          <h2>Privacy and wallet safety</h2>
+          <p>Airdrop Atlas is designed around local calculations. Point entries and model changes happen in the browser. A wallet address, when a checker offers one, is optional and only labels the on-screen result unless the page clearly says otherwise.</p>
           <ul>
             <li>No token approvals, transactions, or message signatures are requested.</li>
             <li>No private key, recovery phrase, password, or account login is needed.</li>
-            <li>This website cannot claim tokens and is not a Grass Foundation property.</li>
+            <li>The current checker does not require a backend account or project login.</li>
+            <li>The website cannot claim tokens or complete official eligibility checks.</li>
           </ul>
         </section>
 
         <section id="limitations" className="docs-section">
           <div className="docs-icon warning"><ShieldAlert size={20} /></div>
-          <h2>Important limitations</h2>
-          <p>Results are hypothetical and should not be used as financial advice, evidence of eligibility, or a valuation. Wallet ownership, anti-Sybil filtering, jurisdiction, snapshots, linked-account deadlines, official tier assignment, and future program rules are not verified.</p>
-          <p>Future Grass stages can use different pools, eligibility rules, or point systems. This S1-style Season 2 projection should not be treated as a confirmed token allocation.</p>
+          <h2>What the website does not do</h2>
+          <p>Results are hypothetical and should not be used as financial advice, evidence of eligibility, or a confirmed valuation. Airdrop Atlas does not verify wallet ownership, anti-Sybil status, jurisdiction, snapshot inclusion, linked-account deadlines, official tier assignment, or future program rules.</p>
+          <p>Every checker depends on the assumptions shown on its page. If an official project changes its rules, pools, point systems, or claim requirements, the estimate can become outdated.</p>
         </section>
 
         <section id="sources" className="docs-section sources-section">
-          <h2>Primary sources</h2>
+          <div className="docs-icon"><FileText size={20} /></div>
+          <h2>Current project sources</h2>
+          <p>Sources are tracked per checker. For the current Grass checker, these are the references used to explain the point categories and historical payout model.</p>
           <a href="https://grass-foundation.gitbook.io/grass-docs/how-to-guide/grass-points" target="_blank" rel="noreferrer"><span>Grass Foundation — Grass Points</span><small>Uptime Points, Network Points, rank cutoffs, referrals, and epoch history</small></a>
           <a href="https://grass-foundation.gitbook.io/grass-docs/introduction/grass/grass-airdrop-one" target="_blank" rel="noreferrer"><span>Grass Foundation — Grass Airdrop One</span><small>Season 1 Network Snapshot pool and historical tier payout table</small></a>
           <a href="https://www.grass.io/learn/an-update-to-the-grass-points-model" target="_blank" rel="noreferrer"><span>Grass — Points Model Update</span><small>Uptime and Network Points explanation plus rewards dashboard notes</small></a>
