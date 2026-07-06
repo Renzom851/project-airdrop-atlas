@@ -6,6 +6,33 @@ import { epochIds, estimateTier, formatNumber, getEpochs, S2_ASSUMED_POOL, S2_EP
 
 const emptyRows = () => Object.fromEntries(epochIds.map((id) => [id, { points: '' }]))
 const isSolanaAddress = (value) => /^[1-9A-HJ-NP-Za-km-z]{32,44}$/.test(value.trim())
+const shorthandMultipliers = { k: 1_000, m: 1_000_000, b: 1_000_000_000 }
+
+function parseShorthandNumber(value) {
+  const compact = String(value).trim().replace(/[,\s_]/g, '')
+  if (!compact) return 0
+
+  const match = compact.match(/^(\d+(?:\.\d*)?|\.\d+)([kmb])?$/i)
+  if (!match) return null
+
+  const numeric = Number(match[1])
+  if (!Number.isFinite(numeric)) return null
+
+  const suffix = match[2]?.toLowerCase()
+  return numeric * (suffix ? shorthandMultipliers[suffix] : 1)
+}
+
+function normalizeShorthandNumber(value) {
+  const raw = String(value)
+  if (!raw.trim()) return ''
+  if (!/[kmb]\s*$/i.test(raw)) return raw
+
+  const numeric = parseShorthandNumber(raw)
+  if (numeric === null) return raw
+
+  const rounded = Math.round((numeric + Number.EPSILON) * 100) / 100
+  return String(rounded)
+}
 
 export default function GrassChecker() {
   const [wallet, setWallet] = useState('')
@@ -20,7 +47,7 @@ export default function GrassChecker() {
 
   const results = useMemo(() => modeledEpochs.map((epoch) => {
     const row = rows[epoch.id]
-    const points = Number(row.points) || 0
+    const points = parseShorthandNumber(row.points) ?? 0
     const tier = estimateTier(points)
     const payout = points >= 500 && tier ? epoch.rewards[tier - 1] : 0
     return { ...epoch, points, tier, payout }
@@ -33,8 +60,9 @@ export default function GrassChecker() {
   const bestEpoch = results.reduce((best, result) => (result.payout > best.payout ? result : best), { payout: 0, label: '—' })
 
   function updateRow(id, value) {
-    if (Number(value) < 0) return
-    setRows((current) => ({ ...current, [id]: { points: value } }))
+    const nextValue = normalizeShorthandNumber(value)
+    if (nextValue.trim().startsWith('-')) return
+    setRows((current) => ({ ...current, [id]: { points: nextValue } }))
   }
 
   function updateAssumedPool(value) {
@@ -166,7 +194,7 @@ export default function GrassChecker() {
                 return (
                   <div className="points-row" role="row" key={result.id}>
                     <div className="epoch-name"><strong>{result.label}</strong><span>{formatNumber(result.allocation, 0)} assumed pool</span></div>
-                    <div className="number-input"><input type="number" min="0" step="0.01" inputMode="decimal" value={row.points} onChange={(event) => updateRow(result.id, event.target.value)} placeholder="0" /><span>UP</span></div>
+                    <div className="number-input"><input type="text" inputMode="decimal" value={row.points} onChange={(event) => updateRow(result.id, event.target.value)} placeholder="0" /><span>UP</span></div>
                     <strong className={result.tier ? 'tier-value has-value' : 'tier-value'}>{result.tier ? `Tier ${result.tier}` : '—'}</strong>
                     <strong className={result.payout ? 'token-value has-value' : 'token-value'}>{result.payout ? formatNumber(result.payout) : '—'}</strong>
                   </div>
