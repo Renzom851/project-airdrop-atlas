@@ -1,5 +1,5 @@
 export const S1_NETWORK_POOL = 90_000_000
-export const S2_ASSUMED_POOL = 90_000_000
+export const S2_ASSUMED_POOL = 170_000_000
 export const S2_EPOCH_COUNT = 20
 
 const s1NetworkSnapshotRewards = [

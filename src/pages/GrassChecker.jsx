@@ -226,7 +226,7 @@ export default function GrassChecker() {
                 </div>
               </label>
               <button className="button button-secondary setting-reset" onClick={resetAssumedPool}>
-                <RotateCcw size={15} /> Reset 90M
+                <RotateCcw size={15} /> Reset 170M
               </button>
             </div>
             <p id="pool-setting-help" className="settings-help">Current model pool: {formatNumber(assumedPool, 0)} GRASS. Tier thresholds stay the same; only projected token payouts scale.</p>

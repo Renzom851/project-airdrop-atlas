@@ -77,7 +77,7 @@ export default function Docs() {
             <Link to="/airdrops/grass" className="button button-primary">Open checker</Link>
           </div>
           <h3>Grass model summary</h3>
-          <p>Grass Stage 2 separates points into Uptime Points and Network Points. This checker uses Uptime Points only. It defaults to a 90M GRASS assumed S2 network pool and lets users adjust that pool in the model settings.</p>
+          <p>Grass Stage 2 separates points into Uptime Points and Network Points. This checker uses Uptime Points only. It defaults to a 170M GRASS assumed S2 network pool and lets users adjust that pool in the model settings.</p>
           <div className="code-formula">Estimated Grass S2 allocation = sum of projected payout(auto tier, Epoch 1 to Epoch 20)</div>
           <p>The Grass checker is a projection, not an official claim result. Airdrop Atlas can add more project checkers later when their source data and model assumptions can be documented clearly.</p>
         </section>
