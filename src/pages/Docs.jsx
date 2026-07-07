@@ -16,76 +16,76 @@ export default function Docs() {
       </aside>
       <article className="docs-content">
         <div className="docs-hero" id="overview">
-          <span className="kicker">Airdrop Atlas docs</span>
-          <h1>What this website is for.</h1>
-          <p>Airdrop Atlas is a browser-based hub for airdrop allocation checkers. It helps users turn public project activity, points, epochs, ranks, or other documented inputs into transparent educational estimates.</p>
+          <span className="kicker">Airdrop Atlas guide</span>
+          <h1>Estimate your airdrops with less guesswork.</h1>
+          <p>Airdrop Atlas is a simple place to check what your airdrop points may turn into. Pick a project, paste the numbers from its dashboard, and see a clear estimate with the important warnings beside it.</p>
         </div>
 
-        <div className="docs-callout"><BookOpen size={20} /><p><strong>Plain-language summary:</strong> the website does not claim tokens, log in to airdrop accounts, or promise official eligibility. It gives users a clean place to enter known values, see the math, adjust assumptions, and understand the limits of each model.</p></div>
+        <div className="docs-callout"><BookOpen size={20} /><p><strong>Quick summary:</strong> use this as a planning tool. It can help you estimate, compare, and understand a possible allocation. It does not claim tokens for you, log in to your airdrop account, or guarantee that you are eligible.</p></div>
 
         <section id="what-it-does" className="docs-section">
           <div className="docs-icon"><Target size={20} /></div>
-          <h2>What Airdrop Atlas does</h2>
-          <p>The site organizes independent airdrop calculators in one place. Each checker is built around a specific project and shows the input fields, assumptions, estimated output, and limitations directly on the page.</p>
+          <h2>What you can do here</h2>
+          <p>Instead of guessing from screenshots or spreadsheets, you can use a checker made for the project you care about. Each checker asks for the values you can find in that project’s dashboard and turns them into an easy-to-read estimate.</p>
           <div className="docs-feature-grid">
             <div>
               <CheckCircle2 size={18} />
-              <strong>Estimate allocations</strong>
-              <span>Convert user-entered point or activity data into a projected token amount when a model is available.</span>
+              <strong>Check your points</strong>
+              <span>Paste the points, ranks, epochs, or activity numbers shown in a supported project dashboard.</span>
             </div>
             <div>
               <CheckCircle2 size={18} />
-              <strong>Show the assumptions</strong>
-              <span>Keep formulas, tier rules, default pools, and warnings visible instead of hiding the calculation.</span>
+              <strong>See an estimate</strong>
+              <span>Get a projected token amount and see which entries helped your total the most.</span>
             </div>
             <div>
               <CheckCircle2 size={18} />
-              <strong>Keep inputs local</strong>
-              <span>Run calculations in the browser so users can test scenarios without submitting point history to a server.</span>
+              <strong>Stay in control</strong>
+              <span>Review the settings and warnings before you decide how much weight to give the result.</span>
             </div>
           </div>
-          <p>Airdrop Atlas is useful for planning, comparison, and learning how an allocation model might work. It is not a replacement for official project dashboards or claim pages.</p>
+          <p>Airdrop Atlas is useful for planning and comparison before official claim details are final. It is not a replacement for the project’s official dashboard, claim page, or announcements.</p>
         </section>
 
         <section id="how-checkers-work" className="docs-section">
           <div className="docs-icon"><ListChecks size={20} /></div>
           <h2>How the checkers work</h2>
           <ol>
-            <li>A supported project gets a dedicated checker page with the fields that matter for that project.</li>
-            <li>The user enters public values from the project dashboard, such as points, epochs, ranks, or activity totals.</li>
-            <li>The checker applies a disclosed formula or projection model and updates the result immediately.</li>
-            <li>The page shows the estimated allocation, model settings, data sources, and limitations so users can judge the result.</li>
+            <li>Open the checker for the project you want to estimate.</li>
+            <li>Copy the values from that project’s dashboard, such as points, epochs, ranks, or activity totals.</li>
+            <li>Paste those values into the checker and the estimate updates right away.</li>
+            <li>Read the settings, sources, and warnings before relying on the number.</li>
           </ol>
-          <div className="code-formula">User inputs + documented assumptions = educational estimate</div>
+          <div className="code-formula">Your dashboard values &gt; projected estimate &gt; warnings to review</div>
           <div className="docs-flow-grid">
             <div><span>01</span><strong>Choose a project</strong><p>Start from the airdrop directory and open a live checker.</p></div>
-            <div><span>02</span><strong>Enter known values</strong><p>Paste the values shown in the project dashboard or activity history.</p></div>
-            <div><span>03</span><strong>Review the model</strong><p>Check the output, editable assumptions, source notes, and warnings.</p></div>
+            <div><span>02</span><strong>Paste your values</strong><p>Use the numbers shown in the project dashboard or activity history.</p></div>
+            <div><span>03</span><strong>Review the result</strong><p>Check the estimate, settings, source notes, and warnings.</p></div>
           </div>
         </section>
 
         <section id="grass-model" className="docs-section">
           <div className="docs-icon"><Calculator size={20} /></div>
           <h2>Current live checker: Grass</h2>
-          <p>The first supported model is the Grass Season 2 allocation checker. It estimates a Season 2-style GRASS allocation from Uptime Points by applying a Season 1-style tier and payout projection across 20 epochs.</p>
+          <p>The first live checker is for Grass Season 2. It lets you enter your Uptime Points for each epoch and gives you a projected GRASS total.</p>
           <div className="docs-checker-card">
             <div>
               <span className="status-pill">Live checker</span>
               <h3>Grass S2 allocation checker</h3>
-              <p>Users enter Uptime Points for Epoch 1 through Epoch 20. The checker assigns an automatic tier, estimates the projected GRASS payout per epoch, and adds the total.</p>
+              <p>Enter Uptime Points for Epoch 1 through Epoch 20. The checker estimates a tier for each epoch, calculates the projected GRASS amount, and adds everything into one total.</p>
             </div>
             <Link to="/airdrops/grass" className="button button-primary">Open checker</Link>
           </div>
-          <h3>Grass model summary</h3>
-          <p>Grass Stage 2 separates points into Uptime Points and Network Points. This checker uses Uptime Points only. It defaults to a 170M GRASS assumed S2 network pool and lets users adjust that pool in the model settings.</p>
+          <h3>How the Grass estimate works</h3>
+          <p>Grass Stage 2 shows different point types. This checker only uses Uptime Points. It starts with a 170M GRASS assumed S2 network pool, and you can change that number in the model settings.</p>
           <div className="code-formula">Estimated Grass S2 allocation = sum of projected payout(auto tier, Epoch 1 to Epoch 20)</div>
-          <p>The Grass checker is a projection, not an official claim result. Airdrop Atlas can add more project checkers later when their source data and model assumptions can be documented clearly.</p>
+          <p>The Grass checker is a projection, not an official claim result. More project checkers can be added later when there is enough public information to make a useful estimate.</p>
         </section>
 
         <section id="privacy" className="docs-section">
           <div className="docs-icon"><LockKeyhole size={20} /></div>
           <h2>Privacy and wallet safety</h2>
-          <p>Airdrop Atlas is designed around local calculations. Point entries and model changes happen in the browser. A wallet address, when a checker offers one, is optional and only labels the on-screen result unless the page clearly says otherwise.</p>
+          <p>Your point entries and setting changes are calculated in your browser. If a checker lets you paste or connect a wallet, that wallet is only used to label the on-screen result unless the page clearly says otherwise.</p>
           <ul>
             <li>No token approvals, transactions, or message signatures are requested.</li>
             <li>No private key, recovery phrase, password, or account login is needed.</li>

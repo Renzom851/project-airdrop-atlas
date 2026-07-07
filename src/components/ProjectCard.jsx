@@ -12,10 +12,10 @@ export default function ProjectCard() {
       </div>
       <div className="project-meta"><span>DePIN</span><span>•</span><span>Solana</span></div>
       <h3>Grass</h3>
-      <p>Estimate a Season 2-style GRASS allocation from your uptime points across 20 numbered epochs.</p>
+      <p>Enter your Grass uptime points and see a possible Season 2 GRASS allocation.</p>
       <div className="project-stats">
-        <div><span>Model</span><strong>S1-style S2</strong></div>
-        <div><span>Inputs</span><strong>20 epochs</strong></div>
+        <div><span>Estimate</span><strong>Season 2 style</strong></div>
+        <div><span>You enter</span><strong>20 epochs</strong></div>
       </div>
       <Link to="/airdrops/grass" className="text-link">Open Grass checker <ArrowUpRight size={17} /></Link>
     </article>
@@ -33,9 +33,9 @@ export function UpcomingProjectCard() {
       </div>
       <div className="project-meta"><span>Multi-project</span><span>•</span><span>Planned</span></div>
       <h3>More airdrops</h3>
-      <p>Future checker modules can sit beside Grass with their own inputs, assumptions, sources, and project-specific estimates.</p>
+      <p>The directory is built for multiple airdrops, so new project checkers can be added beside Grass.</p>
       <div className="project-stats">
-        <div><span>Status</span><strong>Next models</strong></div>
+        <div><span>Status</span><strong>Next checkers</strong></div>
         <div><span>Coverage</span><strong>Expanding</strong></div>
       </div>
       <Link to="/airdrops" className="text-link">View checker directory <ArrowUpRight size={17} /></Link>
